@@ -11,6 +11,9 @@ namespace FindMaxNum
 
             //uc2 given three floats find the maximum
             Console.WriteLine("the maximum float value is:" + MaxNum.Find3MaxNum(10f, 2f, 3f));
+
+            //uc3 find the maximum string
+            Console.WriteLine("the maximum string is:" + MaxNum.Find3MaxNum("apple", "peach", "banana"));
         }
     }
 }
