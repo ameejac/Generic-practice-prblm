@@ -1,74 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace FindMaxNum
 {
-    class MaxNum
+    class GenericArrayMax<T> where T: IComparable
     {
-        public static  int Find3MaxNum(int firstvalue,int secondvalue,int thirdvalue)
+        public T[] array;
+        public GenericArrayMax(T[] array)
         {
-            if(firstvalue.CompareTo(secondvalue) > 0 && firstvalue.CompareTo(thirdvalue) > 0)
-            {
-                return firstvalue;
-            }
-            else if(secondvalue.CompareTo(firstvalue) > 0 &&secondvalue.CompareTo(thirdvalue) > 0)
-            {
-                return secondvalue;
-            }
-            else if(thirdvalue.CompareTo(firstvalue) > 0 && thirdvalue.CompareTo(secondvalue) > 0)
-            {
-                return thirdvalue;
-            }
-            else
-            {
-                Console.WriteLine("two are more numbers are equal");
-            }
-            return 0;
+            this.array = array;
         }
-        //uc2 given three floats find the max (overloading method)
-        public static float Find3MaxNum(float firstvalue, float secondvalue,float thirdvalue)
+        /// <summary>
+        /// here im sorting the values
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public T[] Sort(T[] values)
         {
-            if(firstvalue.CompareTo(secondvalue)> 0 && firstvalue.CompareTo(thirdvalue) > 0)
-            {
-                return firstvalue;
-            }
-            else if(secondvalue.CompareTo(firstvalue) > 0 && secondvalue.CompareTo(thirdvalue) > 0)
-            {
-                return secondvalue;
-            }
-            else if (thirdvalue.CompareTo(firstvalue) > 0 && thirdvalue.CompareTo(secondvalue) > 0)
-            {
-                return thirdvalue;
-            }
-            else
-            {
-                Console.WriteLine("two are more numbers are equal");
-            }
-            return 0;
+            Array.Sort(values);
+            return values;
         }
-
-        public static string Find3MaxNum(string first, string second, string third)
+        /// <summary>
+        /// i am returning the maximum value
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public T MaxValue(params T[] values)
         {
-            if (first.CompareTo(second) > 0 && first.CompareTo(third) > 0)
-            {
-                return first;
-            }
-            else if (second.CompareTo(first) > 0 && second.CompareTo(third) > 0)
-            {
-                return second;
-            }
-            else if (third.CompareTo(first) > 0 && third.CompareTo(second) > 0)
-            {
-                return third;
-            }
-            else
-            {
-                Console.WriteLine("all are equal");
-            }
-            return null;
+            var Sorted_values = Sort(values);
+            return Sorted_values[^1];
         }
+        
+        public  void  displayMaxValue()
+        {
+            var max = MaxValue(this.array);
+            Console.WriteLine("display maximum value:" + max);
+        }
+        
     }
-
-
 }
